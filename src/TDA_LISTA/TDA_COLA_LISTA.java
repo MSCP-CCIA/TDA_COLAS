@@ -1,6 +1,7 @@
 package TDA_LISTA;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class TDA_COLA_LISTA {
     ArrayList<Object> cola = new ArrayList<>();
@@ -25,5 +26,10 @@ public class TDA_COLA_LISTA {
     }
     public Object peekLast(){
         return cola.get(0);
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(cola);
     }
 }
