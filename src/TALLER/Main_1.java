@@ -1,51 +1,39 @@
 package TALLER;
-
-import TDA_LISTA.TDA_COLA_LISTA;
-
+import TDA_RING_COLA.TDA_RING_COLA;
 import java.util.*;
 import java.util.function.Supplier;
-
 public class Main_1 {
     public static ArrayList<String> listaEstudiantes = new ArrayList<>();
-    public static Queue<String> colaEstudiantes = new LinkedList<>();
+    public static TDA_RING_COLA colaEstudiantes = new TDA_RING_COLA();
     public static Queue<String> colaColados = new LinkedList<>();
-    public static Queue<String> colaNoColados = new LinkedList<>();
     public static void main(String[] args) {
         Supplier<Boolean> randomBooleanSupplier = () -> new Random().nextBoolean();
-        for (int i = 1; i < 31; i++) {
+        for (int i = 1; i < 21; i++) {
             listaEstudiantes.add(String.valueOf(randomBooleanSupplier.get()));
             listaEstudiantes.add(String.valueOf(i));
         }
         addTicket();
         removeStrained();
-        remove();
+        System.out.println(colaEstudiantes);
     }
     public static void addTicket(){
         for (String estudiante: listaEstudiantes) {
-            colaEstudiantes.offer(estudiante);
+            colaEstudiantes.enqueue(estudiante);
+
         }
         System.out.println(colaEstudiantes);
     }
     public static void removeStrained(){
-        while (!colaEstudiantes.isEmpty()){
-            if (colaEstudiantes.element()=="false"){
-                colaColados.offer(colaEstudiantes.poll());
-                colaColados.offer(colaEstudiantes.poll());
+        while ((colaEstudiantes.getInicio()!=colaEstudiantes.getQueue().length-2)){
+            if (colaEstudiantes.peek()=="false"){
+                colaColados.offer(String.valueOf(colaEstudiantes.dequeue()));
+                colaColados.offer(String.valueOf(colaEstudiantes.dequeue()));
             }
             else {
-                colaNoColados.offer(colaEstudiantes.poll());
-                colaNoColados.offer(colaEstudiantes.poll());
+                colaEstudiantes.enqueue(colaEstudiantes.dequeue());
+                colaEstudiantes.enqueue(colaEstudiantes.dequeue());
             }
         }
         System.out.println(colaColados);
     }
-    public static void remove(){
-        while (!colaNoColados.isEmpty()){
-            System.out.println(colaNoColados.poll());
-        }
-        System.out.println(colaNoColados);
-    }
-
-
-
 }

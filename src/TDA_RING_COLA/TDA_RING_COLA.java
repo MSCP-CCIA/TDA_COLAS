@@ -3,10 +3,10 @@ package TDA_RING_COLA;
 import java.util.Arrays;
 
 public class TDA_RING_COLA {
-    private Object[] queue =new Object[20];
-    private int inicio = -1; // índice del primer elemento
-    private int fin = -1; // índice del último elemento
-    private int size = 0; // tamaño actual de la cola
+    private Object[] queue =new Object[40];
+    private int inicio = -1;
+    private int fin = -1;
+    private int size = 0;
 
 
     public boolean isEmpty() {
@@ -37,15 +37,12 @@ public class TDA_RING_COLA {
         if (isEmpty()) {
             return "La cola está vacía";
         }
-        Object dato = queue[inicio];
-        if (inicio == fin) {
-            inicio = -1;
-            fin = -1;
-        } else {
+        else {
+            Object dato = queue[inicio];
             inicio = (inicio + 1) % queue.length;
+            size--;
+            return dato;
         }
-        size--;
-        return dato;
     }
 
     public Object peek() {
