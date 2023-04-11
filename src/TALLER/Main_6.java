@@ -1,8 +1,6 @@
 package TALLER;
-
 import java.util.ArrayList;
 import java.util.Stack;
-
 public class Main_6 {
     public static void main(String[] args) {
         llenarLista(500);
@@ -11,10 +9,8 @@ public class Main_6 {
         System.out.println(temperaturas.toString());
         System.out.println(promedio(temperaturas.size()-1, 0, 0));
     }
-
     public static ArrayList<ArrayList<Integer>> listaDeDatos = new ArrayList<ArrayList<Integer>>();
     public static Stack<Integer> temperaturas = new Stack<>();
-
     public static ArrayList<ArrayList<Integer>> llenarLista(int tamaño){
         for (int i = 0; i <tamaño; i++) {
             ArrayList<Integer> lista = new ArrayList<>();
@@ -26,7 +22,6 @@ public class Main_6 {
         }
         return listaDeDatos;
     }
-
     public static Stack llenarPila(int mes, int indice) {
         if (indice < 0) {
             return temperaturas;
@@ -37,7 +32,6 @@ public class Main_6 {
             return llenarPila(mes, indice - 1);
         }
     }
-
     public static int promedio(int indice, int promedio, int contador) {
         if (indice < 0) {
             return promedio/contador;
