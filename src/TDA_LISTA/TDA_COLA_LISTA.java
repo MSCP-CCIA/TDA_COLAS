@@ -27,7 +27,9 @@ public class TDA_COLA_LISTA {
     public Object peekLast(){
         return cola.get(0);
     }
-
+    public int size(){
+        return cola.size();
+    }
     @Override
     public String toString() {
         return String.valueOf(cola);
